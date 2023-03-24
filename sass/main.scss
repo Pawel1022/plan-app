@@ -1,0 +1,152 @@
+@import './colors';
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body {
+	height: 100vh;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+.app {
+	display: flex;
+	min-height: 100%;
+
+	&__btn {
+		position: fixed;
+		top: 1em;
+		right: 1em;
+		padding: 0.3em;
+		background: none;
+		border: 2px solid $color-brand--2;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+
+	&__head {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		padding: 0.5em 0;
+	}
+
+	&__logo {
+		width: 30px;
+		height: 30px;
+		align-self: center;
+		margin-left: 0.5em;
+	}
+
+	&__header {
+		font-weight: 300;
+		color: $color-light--3;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	&__sidebar {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 35vh;
+		background-color: $color-dark--1;
+		z-index: 100;
+		overflow-x: hidden;
+	}
+
+	.form{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 2.5em;
+		margin: 2em 0;
+		border-radius: 5px;
+		
+		
+
+		&__row{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding-bottom: 0.5em;
+		}
+
+		&__label{
+			padding-bottom: 0.5em;
+			font-size: 1.6rem;
+			color: $color-light--2;
+			text-transform: uppercase;
+		}
+
+		&__input{
+			padding: 0.25em 0em;
+			width: 150px;
+			font-size: 1.6rem;
+			background-color: $color-dark--2;
+			color: $color-light--2;
+			text-align: center;
+			font-weight: bold;
+			text-transform: uppercase;
+			border: 2px solid $color-brand--2;
+			border-radius: 10px;
+		}
+
+		&__btn{
+			padding: 0.6em 1.2em;
+			align-self: flex-end;
+			margin-top: 1em;
+			font-size: 1.2rem;
+			font-weight: bold;
+			background-color: $color-brand--2;
+			color: $color-dark--1;
+			text-transform: uppercase;
+			border: 2px solid $color-light--3;
+			border-radius: 10px;
+			cursor: pointer;
+		}
+
+	}
+	.activities{
+		list-style: none;
+		&__item{
+			padding: 0.5em 1em;
+			margin: 1em;
+			border-radius: 10px;
+			background-color: $color-dark--2;
+			
+		}
+		&__title{
+			padding-bottom: 0.5em;
+			font-size: 1.8rem;
+			color: $color-brand--2;
+			text-align: center;
+		}
+
+		&__details{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 2em;
+		}
+
+		&__icon{
+			font-size: 2rem;
+		}
+
+		&__value{
+			font-size: 1.6rem;
+			color: $color-light--2;
+			
+		}
+	}
+}

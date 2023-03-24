@@ -1,0 +1,132 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100vh;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.app {
+  display: flex;
+  min-height: 100%;
+}
+.app__btn {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  padding: 0.3em;
+  background: none;
+  border: 2px solid #00c46a;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.app__head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.5em 0;
+}
+.app__logo {
+  width: 30px;
+  height: 30px;
+  align-self: center;
+  margin-left: 0.5em;
+}
+.app__header {
+  font-weight: 300;
+  color: rgb(214, 222, 224);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.app__sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 35vh;
+  background-color: #2d3439;
+  z-index: 100;
+  overflow-x: hidden;
+}
+.app .form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.5em;
+  margin: 2em 0;
+  border-radius: 5px;
+}
+.app .form__row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 0.5em;
+}
+.app .form__label {
+  padding-bottom: 0.5em;
+  font-size: 1.6rem;
+  color: #ececec;
+  text-transform: uppercase;
+}
+.app .form__input {
+  padding: 0.25em 0em;
+  width: 150px;
+  font-size: 1.6rem;
+  background-color: #42484d;
+  color: #ececec;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 2px solid #00c46a;
+  border-radius: 10px;
+}
+.app .form__btn {
+  padding: 0.6em 1.2em;
+  align-self: flex-end;
+  margin-top: 1em;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #00c46a;
+  color: #2d3439;
+  text-transform: uppercase;
+  border: 2px solid rgb(214, 222, 224);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.app .activities {
+  list-style: none;
+}
+.app .activities__item {
+  padding: 0.5em 1em;
+  margin: 1em;
+  border-radius: 10px;
+  background-color: #42484d;
+}
+.app .activities__title {
+  padding-bottom: 0.5em;
+  font-size: 1.8rem;
+  color: #00c46a;
+  text-align: center;
+}
+.app .activities__details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2em;
+}
+.app .activities__icon {
+  font-size: 2rem;
+}
+.app .activities__value {
+  font-size: 1.6rem;
+  color: #ececec;
+}/*# sourceMappingURL=main.css.map */

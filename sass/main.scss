@@ -1,4 +1,4 @@
-@import './colors';
+@use './index' as *;
 
 *,
 *::after,
@@ -22,6 +22,10 @@ body {
 	display: flex;
 	min-height: 100%;
 
+	&__map {
+		height: 100vh;
+	}
+
 	&__btn {
 		position: fixed;
 		top: 1em;
@@ -35,19 +39,19 @@ body {
 
 	&__head {
 		display: flex;
-		flex-direction: row;
 		align-items: center;
-		padding: 0.5em 0;
+		padding: 1em 0em;
 	}
 
 	&__logo {
-		width: 30px;
-		height: 30px;
+		width: 20px;
+		height: 20px;
 		align-self: center;
 		margin-left: 0.5em;
 	}
 
 	&__header {
+		font-size: 1.4rem;
 		font-weight: 300;
 		color: $color-light--3;
 		font-weight: bold;
@@ -58,53 +62,53 @@ body {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		width: 35vh;
+		width: 60vw;
 		background-color: $color-dark--1;
 		z-index: 100;
 		overflow-x: hidden;
 	}
 
-	.form{
+	.form {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		padding: 2.5em;
-		margin: 2em 0;
-		border-radius: 5px;
-		
-		
+		padding: 0.5em;
+		margin: 2em 0.75em;
+		border-radius: 10px;
+		background-color: $color-dark--2;
 
-		&__row{
+		&__row {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 			padding-bottom: 0.5em;
 		}
 
-		&__label{
+		&__label {
 			padding-bottom: 0.5em;
-			font-size: 1.6rem;
+			font-size: 1.2rem;
 			color: $color-light--2;
 			text-transform: uppercase;
 		}
 
-		&__input{
-			padding: 0.25em 0em;
-			width: 150px;
-			font-size: 1.6rem;
+		&__input {
+			max-width: 100px;
+
+			padding: 0.35em 0.75em;
+			margin-bottom: 0.25em;
+			font-size: 1.2rem;
 			background-color: $color-dark--2;
 			color: $color-light--2;
 			text-align: center;
 			font-weight: bold;
-			text-transform: uppercase;
 			border: 2px solid $color-brand--2;
 			border-radius: 10px;
 		}
 
-		&__btn{
-			padding: 0.6em 1.2em;
+		&__btn {
 			align-self: flex-end;
-			margin-top: 1em;
+			margin: 1em;
+			padding: 0.5em 1em;
 			font-size: 1.2rem;
 			font-weight: bold;
 			background-color: $color-brand--2;
@@ -114,38 +118,200 @@ body {
 			border-radius: 10px;
 			cursor: pointer;
 		}
-
 	}
-	.activities{
-		list-style: none;
-		&__item{
-			padding: 0.5em 1em;
-			margin: 1em;
-			border-radius: 10px;
-			background-color: $color-dark--2;
-			
+
+	.workouts {
+		&__list {
+			list-style: none;
 		}
-		&__title{
-			padding-bottom: 0.5em;
-			font-size: 1.8rem;
-			color: $color-brand--2;
+
+		&__item {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			margin: 2em 0.75em;
+			padding: 1em;
+			background-color: $color-dark--2;
+			border-radius: 10px;
+		}
+
+		&__title {
+			width: 100%;
+			font-size: 1.4rem;
+			padding-bottom: 1em;
+			color: $color-light--2;
 			text-align: center;
 		}
 
-		&__details{
+		&__details {
 			display: flex;
-			justify-content: space-between;
+			justify-content: center;
 			align-items: center;
-			margin-bottom: 2em;
+			padding: 0.5em 0;
+			font-size: 1.2rem;
+			color: $color-light--3;
 		}
 
-		&__icon{
+		&__icon {
 			font-size: 2rem;
+			margin-right: 0.5em;
 		}
 
-		&__value{
+		&__value {
+			margin-right: 0.5em;
+		}
+
+		&__unit {
+			font-weight: bold;
+		}
+	}
+}
+
+@media (min-width: 375px) {
+	.app {
+		&__head {
+			padding: 1.5em 0em;
+		}
+
+		&__logo {
+			width: 24px;
+			height: 24px;
+		}
+
+		&__header {
 			font-size: 1.6rem;
-			color: $color-light--2;
+		}
+
+		&__sidebar {
+			width: 55vw;
+		}
+
+		.form {
+			padding: 0.5em 3.5em;
+
+			&__row {
+				padding-bottom: 0.75em;
+			}
+
+			&__label {
+				padding-bottom: 0.75em;
+				font-size: 1.4rem;
+			}
+
+			&__input {
+				padding: 0.7em 1em;
+				margin-bottom: 0.4em;
+				font-size: 1.4rem;
+			}
+
+			&__btn {
+				align-self: flex-end;
+				margin: 1em;
+				padding: 0.5em 2em;
+				font-size: 1.4rem;
+			}
+		}
+
+		.workouts {
+			&__title {
+				width: 100%;
+				font-size: 1.6rem;
+			}
+
+			&__details {
+				font-size: 1.4rem;
+			}
+
+			&__icon {
+				font-size: 2.2rem;
+			}
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.app {
+		&__btn {
+			display: none;
+		}
+
+		&__head {
+			padding: 0.5em 0em;
+		}
+
+		&__logo {
+			width: 32px;
+			height: 32px;
+			margin-left: 1em;
+		}
+
+		&__header {
+			font-size: 1.8rem;
+		}
+
+		&__sidebar {
+			width: 40vw;
+		}
+
+		.form {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			margin: 1em;
+
+			&__row {
+				padding-bottom: 0.75em;
+				margin: 0.5em;
+			}
+
+			&__label {
+				padding-bottom: 0.75em;
+				font-size: 1.8rem;
+			}
+
+			&__input {
+				padding: 0.5em 1em;
+				margin-bottom: 0.5em;
+				font-size: 1.6rem;
+			}
+
+			&__btn {
+				
+				
+				padding: 0.25em 1.5em;
+				font-size: 1.6rem;
+				
+				
+			}
+		}
+
+		.workouts {
+			
+
+			&__item {
+			
+				flex-direction: row;
+				justify-content: space-around;
+				flex-wrap: wrap;
+				
+			}
+
+			&__title {
+				width: 100%;
+				font-size: 1.6rem;
+				
+			}
+
+			&__details {
+				
+				font-size: 1.6rem;
+				
+			}
+
+			
+
+
 			
 		}
 	}

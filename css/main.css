@@ -33,6 +33,7 @@ body {
   width: 24px;
   height: 24px;
   align-self: flex-start;
+  margin-left: 0.5em;
 }
 .app__header {
   font-size: 1.4rem;
@@ -98,13 +99,38 @@ body {
   list-style: none;
 }
 .app .workouts__item {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 2em 0.5em;
   padding: 0.5em;
+  overflow: hidden;
   background-color: #42484d;
   border-radius: 10px;
+}
+.app .workouts__item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+}
+.app .workouts__item--running::before {
+  background-color: #ffb545;
+}
+.app .workouts__item--cycling::before {
+  background-color: #00c46a;
+}
+.app .workouts__item--swimming::before {
+  background-color: #19A7CE;
+}
+.app .workouts__item--walking::before {
+  background-color: #E21818;
+}
+.app .workouts__item--skiing::before {
+  background-color: #FFEA20;
 }
 .app .workouts__title {
   width: 100%;
@@ -162,7 +188,7 @@ body {
     font-size: 1.4rem;
   }
   .app .workouts__icon {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
 }
 @media (min-width: 768px) {
@@ -200,12 +226,12 @@ body {
     font-size: 1.8rem;
   }
   .app .form__input {
-    width: 150px;
+    width: 100px;
     padding: 0.5em 1em;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
   }
   .app .form__btn {
-    width: 60%;
+    width: 50%;
     margin: 2em 4em;
   }
   .app .workouts__item {
@@ -213,10 +239,6 @@ body {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-  }
-}
-@media (min-width: 1200px) {
-  .app .form__input {
-    width: 220px;
+    margin-right: 0.25em;
   }
 }/*# sourceMappingURL=main.css.map */

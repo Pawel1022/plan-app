@@ -16,92 +16,94 @@ html {
 body {
 	height: 100vh;
 	font-family: 'Ubuntu', sans-serif;
+	background-color: #ddd;
 }
 
 .app {
-	display: flex;
-	height: 100%;
+	display: grid;
+	grid-template-columns: repeat(2, 50vw);
+	grid-template-rows: 10vh;
+
+	&__sidebar {
+		grid-column: 1/2;
+		grid-row: 2/-1;
+		background-color: $color-dark--1;
+		padding: 1em 0.5em;
+	}
 
 	&__map {
-		height: 100vh;
-		width: 100vw;
+		grid-column: 2/-1;
+		grid-row: 2/-1;
+	}
+
+	&__weather {
+		grid-column: 1/-1;
+		background-color: $color-dark--3;
 	}
 
 	&__head {
-		display: flex;
+		display: grid;
+		justify-content: center;
 		align-items: center;
-		margin: 0.5em 0;
-	}
-
-	&__logo {
-		width: 24px;
-		height: 24px;
-		align-self: flex-start;
-		margin-left: 0.5em;
+		text-align: center;
+		grid-template-columns: 2fr 1fr;
+		padding: 0.5em 0.25em;
+		margin-bottom: 1em;
 	}
 
 	&__header {
-		font-size: 1.4rem;
-		font-weight: 300;
 		color: $color-light--3;
-		font-weight: bold;
-		text-transform: uppercase;
+		grid-column: 1/2;
+		font-size: 1.8rem;
 	}
 
-	&__sidebar {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		background-color: $color-dark--1;
-		z-index: 100;
-		overflow-x: hidden;
-		padding: 0.25em 3em;
+	&__logo {
+		grid-column: 2/-1;
+		width: 28px;
+		height: 28px;
+		justify-self: center;
 	}
 
 	.form {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		margin: 0.5em 0.5em;
+		display: grid;
+		grid-template-rows: repeat(4, 1fr);
+		padding: 0.5em 0.25em;
+		margin: 0.5em 0.25em;
 		border-radius: 10px;
 		background-color: $color-dark--2;
 
 		&__row {
 			display: flex;
 			flex-direction: column;
-			align-items: center;
-			padding-bottom: 0.5em;
+			text-align: center;
+			margin-bottom: 0.5em;
 		}
 
 		&__label {
-			padding: 0.25em 0;
-			font-size: 1.2rem;
+			margin-bottom: 0.5em;
+			font-size: 1.4rem;
 			color: $color-light--2;
 			text-transform: uppercase;
 		}
 
 		&__input {
-			width: 80%;
-			padding: 0.25em 0.5em;
-			margin: 0.5em 0.5em;
+			margin: 0.5em 0.25em;
+			padding: 0.5em 0.25em;
 			font-size: 1.2rem;
-			background-color: $color-dark--2;
-			color: $color-light--2;
 			text-align: center;
-			font-weight: bold;
-			border: 2px solid $color-brand--2;
+			border: 1px solid $color-brand--2;
 			border-radius: 10px;
 		}
 
 		&__btn {
-			padding: 0.5em 1em;
-			margin: 0.5em 0.25em;
-			font-size: 1.2rem;
-			font-weight: bold;
+			justify-self: center;
+			padding: 0.75em 1.5em;
+			margin: 1em 0;
+			color: $color-dark--3;
 			background-color: $color-brand--2;
-			color: $color-dark--1;
 			text-transform: uppercase;
-			border: 2px solid $color-light--3;
+			font-weight: bold;
+			border: none;
 			border-radius: 10px;
 			cursor: pointer;
 		}
@@ -114,14 +116,14 @@ body {
 
 		&__item {
 			position: relative;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
+			display: grid;
+			grid-template-rows: repeat(5, 1fr);
 			margin: 2em 0.5em;
-			padding: 0.5em;
-			overflow: hidden;
+			padding: 0.5em 0.25em;
+			border-top-right-radius: 10px;
+			border-bottom-right-radius: 10px;
 			background-color: $color-dark--2;
-			border-radius: 10px;
+			cursor: pointer;
 
 			&::before {
 				content: '';
@@ -129,7 +131,7 @@ body {
 				left: 0;
 				top: 0;
 				bottom: 0;
-				width: 5px;
+				width: 3px;
 			}
 
 			&--running {
@@ -161,32 +163,31 @@ body {
 		}
 
 		&__title {
-			width: 100%;
-			font-size: 1.4rem;
-			padding-bottom: 1em;
+			font-size: 1.3rem;
+			margin-bottom: 0.5em;
+			justify-self: center;
 			color: $color-light--2;
-			text-align: center;
-		}
-
-		&__details {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			padding: 0.5em 0;
-			font-size: 1.2rem;
-			color: $color-light--3;
 		}
 
 		&__icon {
-			font-size: 2rem;
-			margin-right: 0.5em;
+			font-size: 1.6rem;
+			margin-left: 0.5em;
+		}
+
+		&__details {
+			display: grid;
+			align-items: center;
+			grid-template-columns: 3fr 2fr 2fr;
+			margin-bottom: 0.5em;
+			font-size: 1.2rem;
 		}
 
 		&__value {
-			margin-right: 0.5em;
+			color: $color-light--2;
 		}
 
 		&__unit {
+			color: $color-light--1;
 			font-weight: bold;
 		}
 	}
@@ -194,45 +195,40 @@ body {
 
 @media (min-width: 375px) {
 	.app {
+		&__header {
+			color: $color-light--3;
+			grid-column: 1/2;
+			font-size: 1.8rem;
+		}
+
 		&__logo {
-			width: 28px;
-			height: 28px;
-		}
-
-		&__sidebar {
-			padding: 0.25em 2em;
-		}
-
-		.form {
-			margin: 1em 0.25em;
-
-			&__row {
-				padding-bottom: 0.75em;
-			}
-
-			&__label {
-				font-size: 1.4rem;
-			}
-
-			&__input {
-				padding: 0.25em 0.5em;
-				font-size: 1.4rem;
-			}
-
-			&__btn {
-				margin: 1em 0;
-				padding: 0.5em 1.25em;
-				font-size: 1.4rem;
-			}
+			width: 30px;
+			height: 30px;
 		}
 
 		.workouts {
-			&__details {
+			&__title {
 				font-size: 1.4rem;
+				margin-bottom: 0.5em;
+				justify-self: center;
+				color: $color-light--2;
 			}
 
 			&__icon {
-				font-size: 2rem;
+				font-size: 1.6rem;
+				margin-left: 0.5em;
+			}
+
+			&__details {
+				display: grid;
+				align-items: center;
+				grid-template-columns: repeat(3,1fr);
+				margin-bottom: 0.5em;
+				font-size: 1.3rem;
+			}
+
+			&__value {
+				color: $color-light--2;
 			}
 		}
 	}
@@ -240,8 +236,10 @@ body {
 
 @media (min-width: 768px) {
 	.app {
+		grid-template-columns: 40vw 60vw;
+
 		&__header {
-			font-size: 1.6rem;
+			font-size: 2rem;
 		}
 
 		&__logo {
@@ -250,72 +248,71 @@ body {
 		}
 
 		.form {
-			&__label {
-				font-size: 1.6rem;
-			}
-
-			&__input {
-				font-size: 1.4rem;
-			}
-
-			&__btn {
-				font-size: 1.4rem;
-			}
-		}
-
-		.workouts {
-			&__title {
-				font-size: 1.6rem;
-			}
-		}
-	}
-}
-
-@media (min-width: 992px) {
-	.app {
-		.form {
-			flex-direction: row;
-			justify-content: space-around;
-			flex-wrap: wrap;
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: repeat(2, 1fr);
+			gap: 0.5em;
 
 			&__row {
-				padding-bottom: 1em;
+				margin-bottom: 1em;
 			}
 
 			&__label {
-				padding: 0.5em 0;
-				font-size: 1.8rem;
-			}
-
-			&__input {
-				width: 100px;
-				padding: 0.5em 1em;
-				font-size: 1.2rem;
+				font-size: 1.6rem;
 			}
 
 			&__btn {
-				width: 50%;
-				margin: 2em 4em;
+				grid-column: 1/-1;
+				padding: 0.75em 1.5em;
 			}
 		}
 
 		.workouts {
 			&__item {
-				flex-direction: row;
-				flex-wrap: wrap;
+				grid-template-rows: repeat(2, 1fr);
+				grid-template-columns: repeat(4, 1fr);
+				padding: 0.25em 0.5em;
+			}
+
+			&__title {
+				grid-column: 1/-1;
+				grid-row: 1/2;
+				font-size: 1.5rem;
+			}
+
+			&__icon {
+				font-size: 1.6rem;
+				margin-left: 0.25em;
+			}
+
+			&__details {
+				display: grid;
+				grid-row: 2/3;
 				align-items: center;
-				justify-content: center;
-				margin-right: 0.25em;
+				grid-template-columns: 3fr 2fr 2fr;
+				margin-bottom: 0.5em;
+				font-size: 1.2rem;
+			}
+
+			&__value {
+				color: $color-light--2;
+			}
+
+			&__unit {
+				color: $color-light--1;
+				font-weight: bold;
 			}
 		}
 	}
 }
-// @media (min-width: 1200px) {
-// 	.app {
-// 		.form {
-// 			&__input {
+@media (min-width: 992px) {
+	.app {
+		grid-template-columns: 3fr 9fr;
 
-// 			}
-// 		}
-// 	}
-// }
+		.workouts {
+			&__details {
+				margin-right: 1em;
+			}
+		}
+	}
+}

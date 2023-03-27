@@ -12,16 +12,14 @@
 			href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
 			integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
 			crossorigin="" />
-		<script
-			src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-			integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-			crossorigin=""></script>
+			<script defer="" src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+			<script defer src="./js/main.js"></script>
 		<link rel="stylesheet" href="./css/main.css" />
 		<title>Document</title>
 	</head>
 	<body>
 		<div class="app">
-			<button class="app__btn"><img src="./img/icons/menu.svg" alt="" /></button>
+			<!-- <button class="app__btn"><img src="./img/icons/menu.svg" alt="" /></button> -->
 			<div class="app__sidebar">
 				<div class="app__head">
 					<h1 class="app__header">Plan your workout</h1>
@@ -111,10 +109,36 @@
 								<span class="workouts__unit">SPM</span>
 							</div>
 						</li>
+						<li class="workouts__item">
+							<h2 class="workouts__title">Cycling on March 24</h2>
+
+							<div class="workouts__details">
+								<span class="workouts__icon">🚴‍♀️</span>
+								<span class="workouts__value">10</span>
+								<span class="workouts__unit">KM</span>
+							</div>
+							<div class="workouts__details">
+								<span class="workouts__icon">⏱️</span>
+								<span class="workouts__value">60</span>
+								<span class="workouts__unit">MIN</span>
+							</div>
+							<div class="workouts__details">
+								<span class="workouts__icon">⚡️</span>
+								<span class="workouts__value">1.0</span>
+								<span class="workouts__unit">MIN/KM</span>
+							</div>
+							<div class="workouts__details">
+								<span class="workouts__icon">🦶🏼</span>
+								<span class="workouts__value">5</span>
+								<span class="workouts__unit">SPM</span>
+							</div>
+						</li>
 					</div>
 				</ul>
 			</div>
 			<div class="app__map" id="map"></div>
 		</div>
+
+		
 	</body>
 </html>

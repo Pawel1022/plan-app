@@ -21,48 +21,48 @@
 		<div class="app">
 			
 			<div class="app__weather"></div>
-			<div class="app__sidebar">
+			<div class="app__sidebar app__sidebar--hidden">
 				<div class="app__head">
 					<h1 class="app__header">Plan your workout</h1>
 					<img src="./img/icons/bookmark.svg" alt="logo" class="app__logo" />
 				</div>
 				<ul class="workouts__list">
 					<form class="form">
-						<div class="form__row">
+						<div class="form__row form__row--active">
 							<label class="form__label">type</label>
 							<select class="form__input form__input--type">
-								<option value="shopping">Running</option>
-								<option value="entertainment">Walking</option>
-								<option value="training">Cycling</option>
-								<option value="meeting">Skiing</option>
-								<option value="launch">Swimming</option>
+								<option value="Running">Running</option>
+								<option value="Walking">Walking</option>
+								<option value="Cycling">Cycling</option>
+								<option value="Skiing">Skiing</option>
+								<!-- <option value="Swimming">Swimming</option> -->
 							</select>
 						</div>
 
-						<div class="form__row">
+						<div class="form__row form__row--active">
 							<label class="form__label">duration</label>
 							<input class="form__input form__input--duration" type="number" placeholder="min" />
 						</div>
 
-						<div class="form__row">
+						<div class="form__row form__row--active">
 							<label class="form__label">distance</label>
 							<input type="number" class="form__input form__input--distance" placeholder="km" />
 						</div>
 
-						<div class="form__row">
+						<div class="form__row form__row--active">
 							<label class="form__label">cadence</label>
 							<input type="number" class="form__input form__input--cadence" placeholder="step/min" />
 						</div>
-						<!-- <div class="form__row">
+						<div class="form__row">
 							<label class="form__label">elevation gain</label>
 							<input type="number" class="form__input form__input--elev" placeholder="meters" />
-						</div> -->
+						</div>
 
 						<button class="form__btn" type="submit">Add</button>
 					</form>
 
 					<div class="workouts__box">
-						<li class="workouts__item workouts__item--running">
+						<!-- <li class="workouts__item workouts__item--running">
 							<h2 class="workouts__title">Running on March 24</h2>
 
 							<div class="workouts__details">
@@ -108,9 +108,9 @@
 								<span class="workouts__icon">🏔️</span>
 								<span class="workouts__value">120</span>
 								<span class="workouts__unit">M</span>
-							</div>
-						</li>
-						<li class="workouts__item workouts__item--swimming">
+							</div> 
+						</li> -->
+						<!-- <li class="workouts__item workouts__item--swimming">
 							<h2 class="workouts__title">Swimming on March 24</h2>
 
 							<div class="workouts__details">
@@ -133,8 +133,8 @@
 								<span class="workouts__value">60</span>
 								<span class="workouts__unit">KCL</span>
 							</div>
-						</li>
-						<li class="workouts__item workouts__item--walking">
+						</li> -->
+						<!-- <li class="workouts__item workouts__item--walking">
 							<h2 class="workouts__title">Walking on March 24</h2>
 
 							<div class="workouts__details">
@@ -181,12 +181,12 @@
 								<span class="workouts__value">60</span>
 								<span class="workouts__unit">M</span>
 							</div>
-						</li>
+						</li> -->
 						
 					</div>
 				</ul>
 			</div>
-			<div class="app__map" id="map"></div>
+			<div class="app__map app__map--active" id="map"></div>
 		</div>
 
 		

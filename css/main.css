@@ -15,12 +15,19 @@ body {
   height: 100vh;
   font-family: "Ubuntu", sans-serif;
   background-color: #ddd;
+  display: grid;
+}
+
+.leaflet-popup-content {
+  font-size: 1.4rem;
 }
 
 .app {
   display: grid;
+  grid-column: 1/-1;
+  grid-row: 1/-1;
   grid-template-columns: repeat(2, 50vw);
-  grid-template-rows: 10vh;
+  grid-template-rows: 10vh 3fr;
 }
 .app__sidebar {
   grid-column: 1/2;
@@ -28,9 +35,16 @@ body {
   background-color: #2d3439;
   padding: 1em 0.5em;
 }
+.app__sidebar--hidden {
+  opacity: 0;
+}
 .app__map {
   grid-column: 2/-1;
   grid-row: 2/-1;
+  height: 100%;
+}
+.app__map--active {
+  grid-column: 1/-1;
 }
 .app__weather {
   grid-column: 1/-1;
@@ -65,10 +79,13 @@ body {
   background-color: #42484d;
 }
 .app .form__row {
-  display: flex;
+  display: none;
   flex-direction: column;
   text-align: center;
   margin-bottom: 0.5em;
+}
+.app .form__row--active {
+  display: flex;
 }
 .app .form__label {
   margin-bottom: 0.5em;

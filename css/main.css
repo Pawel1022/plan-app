@@ -32,19 +32,40 @@ body {
 .app__sidebar {
   grid-column: 1/2;
   grid-row: 2/-1;
-  background-color: #2d3439;
   padding: 1em 0.5em;
+  background-color: #2d3439;
+  z-index: 1000;
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.3s, transform 0.3s;
 }
 .app__sidebar--hidden {
   opacity: 0;
+  transform: translateX(-50vw);
+}
+.app__btn {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 0;
+  top: 50%;
+  padding: 0.2em;
+  margin: 0.5em;
+  z-index: 1000;
+  border-radius: 10px;
+  background-color: #42484d;
+  border: 2px solid #00c46a;
+  transition: transform 0.3s;
+  transform: rotate(0);
+  cursor: pointer;
+}
+.app__btn--active {
+  transform: rotate(180deg);
 }
 .app__map {
-  grid-column: 2/-1;
-  grid-row: 2/-1;
-  height: 100%;
-}
-.app__map--active {
   grid-column: 1/-1;
+  grid-row: 2/-1;
 }
 .app__weather {
   grid-column: 1/-1;
@@ -209,6 +230,21 @@ body {
 @media (min-width: 768px) {
   .app {
     grid-template-columns: 40vw 60vw;
+  }
+  .app__sidebar {
+    grid-column: 1/2;
+    grid-row: 2/-1;
+    transform: translate(0);
+    opacity: 1;
+  }
+  .app__sidebar--hidden {
+    opacity: 1;
+  }
+  .app__map {
+    grid-column: 2/-1;
+  }
+  .app__btn {
+    display: none;
   }
   .app__header {
     font-size: 2rem;

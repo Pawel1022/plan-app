@@ -6,7 +6,7 @@ const inputElevation = document.querySelector('.form__input--elev')
 const inputCadence = document.querySelector('.form__input--cadence')
 const sendFormBtn = document.querySelector('.form__btn')
 const list = document.querySelector('.workouts__list')
-const mapEl = document.querySelector('#map')
+const handlerBtn = document.querySelector('.app__btn')
 
 class App {
 	#map
@@ -17,6 +17,8 @@ class App {
 		this._getCurrentPostion()
 		inputType.addEventListener('change', this._changeInputField)
 		sendFormBtn.addEventListener('click', this._addNewWorkout.bind(this))
+		handlerBtn.addEventListener('click', this._showSideBar.bind(this))
+		list.addEventListener('click', this._findWorkout.bind(this))
 	}
 
 	_getCurrentPostion() {
@@ -32,31 +34,32 @@ class App {
 	}
 
 	_loadMap(postion) {
-		console.log(postion)
 		const { latitude, longitude } = postion.coords
 
-		this.#map = L.map('map').setView([latitude, longitude], this.#mapZoom)
+		this.#map = L.map('map', { zoomControl: false }).setView([latitude, longitude], this.#mapZoom)
+
+		new L.Control.Zoom({ position: 'topright' }).addTo(this.#map)
 
 		L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
 			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 		}).addTo(this.#map)
 
 		this.#map.on('click', this._showSideBar.bind(this))
-
-		// L.marker([51.5, -0.09]).addTo(this.#map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.').openPopup()
 	}
 
 	_showSideBar(mapE) {
+		sidebar.classList.toggle('app__sidebar--hidden')
+		handlerBtn.classList.toggle('app__btn--active')
+
+		if (!mapE) return
 		this.#mapEvent = mapE
-		sidebar.classList.remove('app__sidebar--hidden')
-		mapEl.classList.remove('app__map--active')
 		inputDuration.focus()
 	}
 
 	_hideSideBar() {
 		sidebar.classList.add('app__sidebar--hidden')
-		mapEl.classList.add('app__map--active')
 		inputCadence.value = inputDistance.value = inputDuration.value = inputElevation.value = ''
+		handlerBtn.classList.remove('app__btn--active')
 	}
 
 	_changeInputField() {
@@ -76,7 +79,7 @@ class App {
 			.addTo(this.#map)
 			.bindPopup(
 				L.popup({
-					maxWidth: 250,
+					maxWidth: 200,
 					minWidth: 100,
 					autoClose: false,
 					closeOnClick: false,
@@ -88,7 +91,9 @@ class App {
 	}
 
 	_renderWorkoutEl(workout) {
-		const html = `<li data-id="${workout.id}" class="workouts__item workouts__item--${workout.type.toLowerCase()}">
+		const html = `<li data-id="${
+			workout.id
+		}" class="workout workouts__item workouts__item--${workout.type.toLowerCase()}">
 		<h2 class="workouts__title">${workout.desc}</h2>
 
 		<div class="workouts__details">
@@ -111,12 +116,12 @@ class App {
 	</div>
 	<div class="workouts__details">
 		<span class="workouts__icon">👣</span>
-		<span class="workouts__value">${workout.cadence}</span>
+		<span class="workouts__value">${workout.cadence.toFixed(1)}</span>
 		<span class="workouts__unit">SPM</span>
 	</div>`
 				: `<div class="workouts__details">
 				<span class="workouts__icon">⚡️</span>
-				<span class="workouts__value">${workout.speed}</span>
+				<span class="workouts__value">${workout.speed.toFixed(1)}</span>
 				<span class="workouts__unit">MIN/KM</span>
 			</div>
 			<div class="workouts__details">
@@ -129,6 +134,7 @@ class App {
 	</li>`
 
 		list.insertAdjacentHTML('beforeend', html)
+		this._storeWorkouts(workout)
 	}
 
 	_addNewWorkout(e) {
@@ -200,6 +206,27 @@ class App {
 
 		this._renderWorkoutEl(workout)
 	}
+
+	_findWorkout(e) {
+		const workoutEl = e.target.closest('li')
+
+		if (!workoutEl) return
+
+		const workout = this.#workouts.find(el => el.id === workoutEl.dataset.id)
+
+		this.#map.setView(workout.coords, this.#mapZoom, {
+			animate: true,
+			pan: {
+				duration: 1,
+			},
+		})
+	}
+
+	_storeWorkouts(workout){
+		localStorage.setItem(JSON.stringify(workout))
+	}
+
+	
 }
 
 class Workout {

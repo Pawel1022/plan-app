@@ -21,7 +21,7 @@ body {
 }
 
 .leaflet-popup-content {
-	font-size: 1.4rem ;
+	font-size: 1.4rem;
 }
 
 .app {
@@ -34,22 +34,44 @@ body {
 	&__sidebar {
 		grid-column: 1/2;
 		grid-row: 2/-1;
-		background-color: $color-dark--1;
 		padding: 1em 0.5em;
+		background-color: $color-dark--1;
+		z-index: 1000;
+		opacity: 1;
+		transform: translateX(0);
+		transition: opacity 0.3s, transform 0.3s;
 
 		&--hidden {
 			opacity: 0;
+			transform: translateX(-50vw);
+		}
+	}
+
+	&__btn {
+		position: fixed;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		right: 0;
+		top: 50%;
+		padding: 0.2em;
+		margin: 0.5em;
+		z-index: 1000;
+		border-radius: 10px;
+		background-color: $color-dark--2;
+		border: 2px solid $color-brand--2;
+		transition: transform 0.3s;
+		transform: rotate(0);
+		cursor: pointer;
+
+		&--active {
+			transform: rotate(180deg);
 		}
 	}
 
 	&__map {
-		grid-column: 2/-1;
+		grid-column: 1/-1;
 		grid-row: 2/-1;
-		height: 100%;
-
-		&--active {
-			grid-column: 1/-1;
-		}
 	}
 
 	&__weather {
@@ -79,8 +101,6 @@ body {
 		height: 28px;
 		justify-self: center;
 	}
-
-
 
 	.form {
 		display: grid;
@@ -259,6 +279,25 @@ body {
 @media (min-width: 768px) {
 	.app {
 		grid-template-columns: 40vw 60vw;
+
+		&__sidebar {
+			grid-column: 1/2;
+			grid-row: 2/-1;
+			transform: translate(0);
+			opacity: 1;
+
+			&--hidden {
+				opacity: 1;
+			}
+		}
+
+		&__map {
+			grid-column: 2/-1;
+		}
+
+		&__btn {
+			display: none;
+		}
 
 		&__header {
 			font-size: 2rem;

@@ -67,11 +67,13 @@ body {
 		&--active {
 			transform: rotate(180deg);
 		}
+		
 	}
 
 	&__map {
 		grid-column: 1/-1;
 		grid-row: 2/-1;
+		height: 100%;
 	}
 
 	&__weather {
@@ -103,12 +105,16 @@ body {
 	}
 
 	.form {
-		display: grid;
+		display: none;
 		grid-template-rows: repeat(4, 1fr);
 		padding: 0.5em 0.25em;
 		margin: 0.5em 0.25em;
 		border-radius: 10px;
 		background-color: $color-dark--2;
+
+		&--active{
+			display: grid;
+		}
 
 		&__row {
 			display: none;
@@ -309,7 +315,7 @@ body {
 		}
 
 		.form {
-			display: grid;
+			
 			grid-template-columns: repeat(2, 1fr);
 			grid-template-rows: repeat(2, 1fr);
 			gap: 0.5em;

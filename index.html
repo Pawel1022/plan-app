@@ -12,21 +12,23 @@
 			href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
 			integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
 			crossorigin="" />
-			<script defer="" src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
-			<script defer src="./js/main.js"></script>
+		<script
+			defer=""
+			src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+			integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+			crossorigin=""></script>
+		<script defer src="./js/main.js"></script>
 		<link rel="stylesheet" href="./css/main.css" />
 		<title>Document</title>
 	</head>
 	<body>
 		<div class="app">
-			
 			<button class="app__btn">
-				<img src="./img/icons/chevron-right.svg" alt="">
+				<img class="app__btn-image" src="./img/icons/chevron-right.svg" />
 			</button>
-			
+
 			<div class="app__weather"></div>
 			<div class="app__sidebar app__sidebar--hidden">
-			
 				<div class="app__head">
 					<h1 class="app__header">Plan your workout</h1>
 					<img src="./img/icons/bookmark.svg" alt="logo" class="app__logo" />
@@ -66,134 +68,10 @@
 						<button class="form__btn" type="submit">Add</button>
 					</form>
 
-					<div class="workouts__box">
-						<!-- <li class="workouts__item workouts__item--running">
-							<h2 class="workouts__title">Running on March 24</h2>
-
-							<div class="workouts__details">
-								<span class="workouts__icon">🏃‍♂️</span>
-								<span class="workouts__value">10</span>
-								<span class="workouts__unit">KM</span>
-							</div>
-							<div class="workouts__details">
-								<span class="workouts__icon">⏱️</span>
-								<span class="workouts__value">60</span>
-								<span class="workouts__unit">MIN</span>
-							</div>
-							<div class="workouts__details">
-								<span class="workouts__icon">⚡️</span>
-								<span class="workouts__value">1.0</span>
-								<span class="workouts__unit">MIN/KM</span>
-							</div>
-							<div class="workouts__details">
-								<span class="workouts__icon">👣</span>
-								<span class="workouts__value">5</span>
-								<span class="workouts__unit">SPM</span>
-							</div>
-						</li>
-						<li class="workouts__item workouts__item--cycling">
-							<h2 class="workouts__title">Cycling on March 24</h2>
-
-							<div class="workouts__details">
-								<span class="workouts__icon">🚴‍♀️</span>
-								<span class="workouts__value">10</span>
-								<span class="workouts__unit">KM</span>
-							</div>
-							<div class="workouts__details">
-								<span class="workouts__icon">⏱️</span>
-								<span class="workouts__value">60</span>
-								<span class="workouts__unit">MIN</span>
-							</div>
-							<div class="workouts__details">
-								<span class="workouts__icon">⚡️</span>
-								<span class="workouts__value">1.0</span>
-								<span class="workouts__unit">MIN/KM</span>
-							</div>
-							<div class="workouts__details">
-								<span class="workouts__icon">🏔️</span>
-								<span class="workouts__value">120</span>
-								<span class="workouts__unit">M</span>
-							</div> 
-						</li> -->
-						<!-- <li class="workouts__item workouts__item--swimming">
-							<h2 class="workouts__title">Swimming on March 24</h2>
-
-							<div class="workouts__details">
-								<span class="workouts__icon">🏊‍♂️</span>
-								<span class="workouts__value">10</span>
-								<span class="workouts__unit">KM</span>
-							</div>
-							<div class="workouts__details">
-								<span class="workouts__icon">⏱️</span>
-								<span class="workouts__value">60</span>
-								<span class="workouts__unit">MIN</span>
-							</div>
-							<div class="workouts__details">
-								<span class="workouts__icon">⚡️</span>
-								<span class="workouts__value">1.0</span>
-								<span class="workouts__unit">MIN/KM</span>
-							</div>
-							<div class="workouts__details">
-								<span class="workouts__icon">🔥</span>
-								<span class="workouts__value">60</span>
-								<span class="workouts__unit">KCL</span>
-							</div>
-						</li> -->
-						<!-- <li class="workouts__item workouts__item--walking">
-							<h2 class="workouts__title">Walking on March 24</h2>
-
-							<div class="workouts__details">
-								<span class="workouts__icon">🚶‍♂️</span>
-								<span class="workouts__value">10</span>
-								<span class="workouts__unit">KM</span>
-							</div>
-							<div class="workouts__details">
-								<span class="workouts__icon">⏱️</span>
-								<span class="workouts__value">60</span>
-								<span class="workouts__unit">MIN</span>
-							</div>
-							<div class="workouts__details">
-								<span class="workouts__icon">⚡️</span>
-								<span class="workouts__value">1.0</span>
-								<span class="workouts__unit">MIN/KM</span>
-							</div>
-							<div class="workouts__details">
-								<span class="workouts__icon">👣</span>
-								<span class="workouts__value">60</span>
-								<span class="workouts__unit">SPM</span>
-							</div>
-						</li>
-						<li class="workouts__item workouts__item--skiing">
-							<h2 class="workouts__title">Skiing on March 24</h2>
-
-							<div class="workouts__details">
-								<span class="workouts__icon">⛷️</span>
-								<span class="workouts__value">10</span>
-								<span class="workouts__unit">KM</span>
-							</div>
-							<div class="workouts__details">
-								<span class="workouts__icon">⏱️</span>
-								<span class="workouts__value">60</span>
-								<span class="workouts__unit">MIN</span>
-							</div>
-							<div class="workouts__details">
-								<span class="workouts__icon">⚡️</span>
-								<span class="workouts__value">1.0</span>
-								<span class="workouts__unit">MIN/KM</span>
-							</div>
-							<div class="workouts__details">
-								<span class="workouts__icon">🏔️</span>
-								<span class="workouts__value">60</span>
-								<span class="workouts__unit">M</span>
-							</div>
-						</li> -->
-						
-					</div>
+					
 				</ul>
 			</div>
 			<div class="app__map app__map--active" id="map"></div>
 		</div>
-
-		
 	</body>
 </html>

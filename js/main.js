@@ -6,6 +6,7 @@ const inputElevation = document.querySelector('.form__input--elev')
 const inputCadence = document.querySelector('.form__input--cadence')
 const sendFormBtn = document.querySelector('.form__btn')
 const list = document.querySelector('.workouts__list')
+const form = document.querySelector('.form')
 const handlerBtn = document.querySelector('.app__btn')
 
 class App {
@@ -15,6 +16,8 @@ class App {
 	#workouts = []
 	constructor() {
 		this._getCurrentPostion()
+		this._restoreWorkouts()
+
 		inputType.addEventListener('change', this._changeInputField)
 		sendFormBtn.addEventListener('click', this._addNewWorkout.bind(this))
 		handlerBtn.addEventListener('click', this._showSideBar.bind(this))
@@ -51,15 +54,19 @@ class App {
 		sidebar.classList.toggle('app__sidebar--hidden')
 		handlerBtn.classList.toggle('app__btn--active')
 
-		if (!mapE) return
-		this.#mapEvent = mapE
+		const status = mapE
+
+		if (!status.latlng) return
+		this.#mapEvent = status
 		inputDuration.focus()
+		form.classList.add('form--active')
 	}
 
 	_hideSideBar() {
 		sidebar.classList.add('app__sidebar--hidden')
-		inputCadence.value = inputDistance.value = inputDuration.value = inputElevation.value = ''
 		handlerBtn.classList.remove('app__btn--active')
+
+		inputCadence.value = inputDistance.value = inputDuration.value = inputElevation.value = ''
 	}
 
 	_changeInputField() {
@@ -72,6 +79,10 @@ class App {
 			inputElevation.closest('.form__row').classList.remove('form__row--active')
 			inputCadence.closest('.form__row').classList.add('form__row--active')
 		}
+	}
+
+	_adding(el) {
+		this.#workouts.push(el)
 	}
 
 	_renderPopupMarker(workout) {
@@ -134,7 +145,6 @@ class App {
 	</li>`
 
 		list.insertAdjacentHTML('beforeend', html)
-		this._storeWorkouts(workout)
 	}
 
 	_addNewWorkout(e) {
@@ -164,12 +174,8 @@ class App {
 			}
 		}
 
-		const adding = el => {
-			this.#workouts.push(el)
-			console.log(this.#workouts)
-		}
-
 		let workout
+
 		const duration = +inputDuration.value
 		const distance = +inputDistance.value
 		const alt = checking()
@@ -181,19 +187,19 @@ class App {
 
 		if (inputType.value === 'Running') {
 			workout = new Running(coords, duration, distance, alt)
-			adding(workout)
+			this._adding(workout)
 		}
 		if (inputType.value === 'Walking') {
 			workout = new Walking(coords, duration, distance, alt)
-			adding(workout)
+			this._adding(workout)
 		}
 		if (inputType.value === 'Skiing') {
 			workout = new Skiing(coords, duration, distance, alt)
-			adding(workout)
+			this._adding(workout)
 		}
 		if (inputType.value === 'Cycling') {
 			workout = new Cycling(coords, duration, distance, alt)
-			adding(workout)
+			this._adding(workout)
 		}
 
 		// hidde form and clear inputs
@@ -205,6 +211,8 @@ class App {
 		// render workout on list
 
 		this._renderWorkoutEl(workout)
+
+		this._storeWorkouts()
 	}
 
 	_findWorkout(e) {
@@ -224,11 +232,20 @@ class App {
 		this._hideSideBar()
 	}
 
-	_storeWorkouts(workout){
-		localStorage.setItem('workout',JSON.stringify(workout))
+	_storeWorkouts() {
+		localStorage.setItem('workout', JSON.stringify(this.#workouts))
 	}
 
-	
+	_restoreWorkouts() {
+		const data = JSON.parse(localStorage.getItem('workout'))
+
+		this.#workouts = data
+
+		this.#workouts.forEach(obj =>{
+			this._renderPopupMarker(obj)
+			this._renderWorkoutEl(obj)
+		})
+	}
 }
 
 class Workout {

@@ -220,10 +220,12 @@ class App {
 				duration: 1,
 			},
 		})
+
+		this._hideSideBar()
 	}
 
 	_storeWorkouts(workout){
-		localStorage.setItem(JSON.stringify(workout))
+		localStorage.setItem('workout',JSON.stringify(workout))
 	}
 
 	

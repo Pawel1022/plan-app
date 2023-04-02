@@ -30,6 +30,8 @@ body {
 	grid-row: 1/-1;
 	grid-template-columns: repeat(2, 50vw);
 	grid-template-rows: 10vh 3fr;
+	height: 100vh;
+	overflow: hidden;
 
 	&__sidebar {
 		grid-column: 1/2;

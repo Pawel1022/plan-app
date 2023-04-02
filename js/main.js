@@ -16,7 +16,6 @@ class App {
 	#workouts = []
 	constructor() {
 		this._getCurrentPostion()
-		this._restoreWorkouts()
 
 		inputType.addEventListener('change', this._changeInputField)
 		sendFormBtn.addEventListener('click', this._addNewWorkout.bind(this))
@@ -48,6 +47,7 @@ class App {
 		}).addTo(this.#map)
 
 		this.#map.on('click', this._showSideBar.bind(this))
+		this._restoreWorkouts()
 	}
 
 	_showSideBar(mapE) {
@@ -59,6 +59,7 @@ class App {
 		if (!status.latlng) return
 		this.#mapEvent = status
 		inputDuration.focus()
+		this._restoreWorkouts.bind(this)
 		form.classList.add('form--active')
 	}
 
@@ -239,9 +240,11 @@ class App {
 	_restoreWorkouts() {
 		const data = JSON.parse(localStorage.getItem('workout'))
 
+		if (!data) return
+
 		this.#workouts = data
 
-		this.#workouts.forEach(obj =>{
+		this.#workouts.forEach(obj => {
 			this._renderPopupMarker(obj)
 			this._renderWorkoutEl(obj)
 		})

@@ -14,6 +14,7 @@ class App {
 	#mapZoom = 13
 	#mapEvent
 	#workouts = []
+	#token = '8gGAxluAvpRu71d9rG8ELnH357lffCKskmx995006Co5FvUn24qqSSas2ziKrQ3r'
 	constructor() {
 		this._getCurrentPostion()
 
@@ -42,8 +43,9 @@ class App {
 
 		new L.Control.Zoom({ position: 'topright' }).addTo(this.#map)
 
-		L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+		L.tileLayer('https://{s}.tile.jawg.io/jawg-dark/{z}/{x}/{y}{r}.png?access-token={accessToken}', {
+			attribution: '<a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+			accessToken: this.#token
 		}).addTo(this.#map)
 
 		this.#map.on('click', this._showSideBar.bind(this))

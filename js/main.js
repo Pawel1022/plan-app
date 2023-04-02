@@ -57,6 +57,7 @@ class App {
 		handlerBtn.classList.toggle('app__btn--active')
 
 		const status = mapE
+		console.log(status);
 
 		if (!status.latlng) return
 		this.#mapEvent = status
@@ -130,7 +131,7 @@ class App {
 	</div>
 	<div class="workouts__details">
 		<span class="workouts__icon">👣</span>
-		<span class="workouts__value">${workout.cadence.toFixed(1)}</span>
+		<span class="workouts__value">${workout.cadence}</span>
 		<span class="workouts__unit">SPM</span>
 	</div>`
 				: `<div class="workouts__details">
@@ -140,7 +141,7 @@ class App {
 			</div>
 			<div class="workouts__details">
 				<span class="workouts__icon">🏔️</span>
-				<span class="workouts__value">${workout.elevationGain}</span>
+				<span class="workouts__value">${workout.elevationGain.toFixed(1)}</span>
 				<span class="workouts__unit">M</span>
 			</div>`
 		}
